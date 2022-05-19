@@ -19,14 +19,14 @@ public class Client
             //Réception de l'accusé de réception
             byte [] response = new byte[256];
             DatagramPacket receipt = new DatagramPacket(response, response.length);
-            socket.setSoTimeout(2000);
+            socket.setSoTimeout(2000); //Lance une exception après 2 secondes si l'accusé de réception n'est pas arrivé
 
             try {
                 socket.receive(receipt);
                 String show = new String(receipt.getData());
                 System.out.println("Accusé de réception: " + show);
             }
-            catch (SocketTimeoutException sTE)
+            catch (SocketTimeoutException sTE) //Si l'accusé de réception n'arrive pas avant la timeout de la socket
             {
                 System.out.println("Echec de la réception");
             }
@@ -36,68 +36,5 @@ public class Client
             e.printStackTrace();
             System.exit(1);
         }
-
-
-
-
-
-
-
-
-
-
-
-
-        /*
-        //Création d'une socket liée à un port
-        DatagramSocket socket;
-        DatagramPacket packet;
-        InetAddress adr;
-
-        byte[] data;
-        String servAdr, msg;
-        int portDest;
-
-
-        //Envoi
-        socket = new DatagramSocket();
-        adr = InetAddress.getByName("127.0.0.1");
-        data = (new String("Salut")).getBytes();
-        portDest = 7777;
-
-        while (true)
-        {
-            //Envoi
-            packet = new DatagramPacket(data, data.length, adr, portDest);
-            socket.send(packet);
-
-            //Attente d'accusé de réception
-            data = new byte[256];
-            packet = new DatagramPacket(data, data.length);
-            socket.receive(packet);
-            String affichage = new String(packet.getData(), 0, packet.getLength());
-        }
-
-         */
-
-    /*
-        while (true)
-        {
-            //Réception
-            portDest = Integer.parseInt(args[0]);
-            socket = new DatagramSocket(portDest);
-
-            data = new byte[256];
-            packet = new DatagramPacket(data, data.length);
-            socket.receive(packet);
-
-            String affichage = new String(packet.getData(), 0, packet.getLength());
-            System.out.println("reçu " + affichage);
-
-            //Accusé de réception
-            packet.setData(data);
-            socket.send(packet);
-        }
-     */
     }
 }
