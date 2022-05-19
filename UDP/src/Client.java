@@ -7,6 +7,7 @@ public class Client
     public static void main(String[] args) throws SocketException, IOException, UnknownHostException
     {
         try {
+            //Envoi des données
             DatagramSocket socket = new DatagramSocket();
             InetAddress adr = InetAddress.getByName(args[0]); //"127.0.0.1"
             int portDest = Integer.parseInt(args[1]);
@@ -14,6 +15,14 @@ public class Client
 
             DatagramPacket packet = new DatagramPacket(data, data.length, adr, portDest);
             socket.send(packet);
+
+            //Réception de l'accusé de réception
+            byte [] response = new byte[256];
+            DatagramPacket receipt = new DatagramPacket(response, response.length);
+            socket.receive(receipt);
+
+            String show = new String(receipt.getData());
+            System.out.println("Accusé de réception: " + show);
         }
         catch (IOException e)
         {

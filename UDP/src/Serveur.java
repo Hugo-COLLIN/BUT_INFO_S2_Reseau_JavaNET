@@ -13,9 +13,14 @@ public class Serveur
 
             while (true)
             {
+                //Réception des données
                 socket.receive(packet);
                 String show = new String(packet.getData(), 0, packet.getLength());
                 System.out.println("Reçu: " + show);
+
+                //Envoi d'un accusé de réception
+                DatagramPacket receipt = new DatagramPacket(data, data.length, packet.getAddress(), packet.getPort());
+                socket.send(receipt);
             }
         }
         catch (IOException e)
