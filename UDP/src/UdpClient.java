@@ -2,7 +2,10 @@ import java.io.IOException;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
 
-public class Client
+/**
+ * @author Hugo COLLIN 20220520
+ */
+public class UdpClient
 {
     public static void main(String[] args) throws SocketException, IOException, UnknownHostException
     {

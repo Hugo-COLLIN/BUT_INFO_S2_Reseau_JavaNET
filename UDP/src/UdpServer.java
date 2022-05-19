@@ -1,8 +1,13 @@
-import javax.xml.crypto.Data;
-import java.io.IOException;
-import java.net.*;
 
-public class Serveur
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.nio.charset.StandardCharsets;
+
+/**
+ * @author Hugo COLLIN 20220520
+ */
+public class UdpServer
 {
     public static void main(String[] args)
     {
@@ -19,6 +24,8 @@ public class Serveur
                 System.out.println("Reçu: " + show);
 
                 //Envoi d'un accusé de réception
+                String s = new String(data, StandardCharsets.UTF_8);
+                data = ("recu " + s).getBytes();
                 DatagramPacket receipt = new DatagramPacket(data, data.length, packet.getAddress(), packet.getPort());
                 socket.send(receipt);
             }
