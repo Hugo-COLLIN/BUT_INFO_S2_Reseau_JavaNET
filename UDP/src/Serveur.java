@@ -1,10 +1,34 @@
+import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.net.*;
 
 public class Serveur
 {
-    public static void main(String[] args) throws SocketException, IOException, UnknownHostException
+    public static void main(String[] args)
     {
+        try {
+            DatagramSocket socket = new DatagramSocket(Integer.parseInt(args[0]));
+            byte [] data = new byte[256];
+            DatagramPacket packet = new DatagramPacket(data, data.length);
+
+            while (true)
+            {
+                socket.receive(packet);
+                String show = new String(packet.getData(), 0, packet.getLength());
+                System.out.println("Reçu: " + show);
+            }
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+            System.exit(1);
+        }
+
+
+
+
+
+        /*
         //Création d'une socket liée à un port
         DatagramSocket socket;
         DatagramPacket packet;
@@ -32,6 +56,7 @@ public class Serveur
             packet.setData(data);
             socket.send(packet);
         }
+         */
 
     }
 }

@@ -1,10 +1,38 @@
 import java.io.IOException;
 import java.net.*;
+import java.nio.charset.StandardCharsets;
 
 public class Client
 {
     public static void main(String[] args) throws SocketException, IOException, UnknownHostException
     {
+        try {
+            DatagramSocket socket = new DatagramSocket();
+            InetAddress adr = InetAddress.getByName(args[0]); //"127.0.0.1"
+            int portDest = Integer.parseInt(args[1]);
+            byte[] data = args[2].getBytes(StandardCharsets.ISO_8859_1);
+
+            DatagramPacket packet = new DatagramPacket(data, data.length, adr, portDest);
+            socket.send(packet);
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+            System.exit(1);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+        /*
         //Création d'une socket liée à un port
         DatagramSocket socket;
         DatagramPacket packet;
@@ -33,6 +61,8 @@ public class Client
             socket.receive(packet);
             String affichage = new String(packet.getData(), 0, packet.getLength());
         }
+
+         */
 
     /*
         while (true)
