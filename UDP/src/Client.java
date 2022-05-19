@@ -19,10 +19,17 @@ public class Client
             //Réception de l'accusé de réception
             byte [] response = new byte[256];
             DatagramPacket receipt = new DatagramPacket(response, response.length);
-            socket.receive(receipt);
+            socket.setSoTimeout(2000);
 
-            String show = new String(receipt.getData());
-            System.out.println("Accusé de réception: " + show);
+            try {
+                socket.receive(receipt);
+                String show = new String(receipt.getData());
+                System.out.println("Accusé de réception: " + show);
+            }
+            catch (SocketTimeoutException sTE)
+            {
+                System.out.println("Echec de la réception");
+            }
         }
         catch (IOException e)
         {
