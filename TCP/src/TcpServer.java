@@ -15,19 +15,22 @@ public class TcpServer
             String strExchange = "";
             Scanner sc = new Scanner(System.in);
 
+            //Connexion
+            Socket socket = serverSocket.accept();
+            BufferedReader fromClient = new BufferedReader(
+                    new InputStreamReader(socket.getInputStream())
+            );
+
+            PrintWriter toClient = new PrintWriter(
+                    new OutputStreamWriter(socket.getOutputStream())
+            );
+
             while (!strExchange.equals("stop"))
             {
-                System.out.println(strExchange);
-                System.out.println(strExchange.equals("stop".toLowerCase()));
-                //Connexion
-                Socket socket = serverSocket.accept();
-                BufferedReader fromClient = new BufferedReader(
-                        new InputStreamReader(socket.getInputStream())
-                );
+                //System.out.println(strExchange);
+                //System.out.println(strExchange.equals("stop".toLowerCase()));
 
-                PrintWriter toClient = new PrintWriter(
-                        new OutputStreamWriter(socket.getOutputStream())
-                );
+
 
                 //Envoi de données
                 System.out.println("Entrer un message : ");
