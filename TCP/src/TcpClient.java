@@ -31,8 +31,9 @@ public class TcpClient
             while (!strExchange.equals("stop"))
             {
                 //Réception des données
+                System.out.println("\nEn attente du serveur...");
                 strExchange = fromServer.readLine();
-                System.out.println("\nReçu du serveur :\n" + strExchange);
+                System.out.println("Reçu : " + strExchange);
 
                 //Envoi de données
                 if (!strExchange.equals("stop"))

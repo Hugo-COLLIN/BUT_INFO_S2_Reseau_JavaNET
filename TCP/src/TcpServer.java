@@ -41,8 +41,9 @@ public class TcpServer
                 //Réception des données
                 if (!strExchange.equals("stop"))
                 {
+                    System.out.println("\nEn attente du client...");
                     strExchange = fromClient.readLine();
-                    System.out.println("\nReçu du client :\n" + strExchange);
+                    System.out.println("Reçu : " + strExchange);
                 }
             }
             toClient.close();
