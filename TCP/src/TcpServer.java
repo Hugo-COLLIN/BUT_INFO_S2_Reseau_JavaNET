@@ -2,6 +2,9 @@ import java.io.*;
 import java.net.*;
 import java.util.Scanner;
 
+/**
+ * @author Hugo COLLIN, 20220522
+ */
 public class TcpServer
 {
     public static void main(String[] args)

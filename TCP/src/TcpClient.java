@@ -4,6 +4,9 @@ import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.Scanner;
 
+/**
+ * @author Hugo COLLIN, 20220522
+ */
 public class TcpClient
 {
     public static void main(String[] args) {
