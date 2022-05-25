@@ -1,0 +1,151 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./technique_fichiers/filelist.xml">
+<link rel=Edit-Time-Data href="./technique_fichiers/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>Techniques utilisées pour le serveur MiniWeb</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Nataf</o:Author>
+  <o:LastAuthor>Nataf</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>45</o:TotalTime>
+  <o:Created>2002-12-27T21:14:00Z</o:Created>
+  <o:LastSaved>2002-12-27T21:14:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>125</o:Words>
+  <o:Characters>717</o:Characters>
+  <o:Company>Loria</o:Company>
+  <o:Lines>5</o:Lines>
+  <o:Paragraphs>1</o:Paragraphs>
+  <o:CharactersWithSpaces>880</o:CharactersWithSpaces>
+  <o:Version>9.2812</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:HyphenationZone>21</w:HyphenationZone>
+ </w:WordDocument>
+</xml><![endif]-->
+<style>
+<!--
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+h1
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:16.0pt;
+	font-family:Arial;
+	mso-font-kerning:16.0pt;}
+h2
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:14.0pt;
+	font-family:Arial;
+	font-style:italic;}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:center 8.0cm right 16.0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	tab-stops:center 8.0cm right 16.0cm;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:70.85pt 70.85pt 70.85pt 70.85pt;
+	mso-header-margin:35.4pt;
+	mso-footer-margin:35.4pt;
+	mso-header:url("./technique_fichiers/header.htm") h1;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+</head>
+
+<body lang=FR link=blue vlink=purple style='tab-interval:35.4pt'>
+
+<div class=Section1>
+<img src="images/l1.gif">
+<h1 align=center style='text-align:center'>Techniques utilis&eacute;es pour le serveur
+MiniWeb</h1>
+
+<h2>API java</h2>
+
+<p class=MsoNormal>Le serveur MiniWeb est r&eacute;alis&eacute; avec les classes Socket et
+ServerSocket du package java.net. Les fichiers pouvant &ecirc;tre des fichiers texte
+ou des images binaires, les classes InputStream et OutputStream du package
+java.io sont utilis&eacute;es pour lire les fichiers et les envoyer
+vers le client (le navigateur). Les requ&ecirc;tes des navigateur peuvent &ecirc;tre lues
+comme des fichiers textes avec la classe BufferedReader.</p>
+
+<h2>Protocole</h2>
+
+<p class=MsoNormal>Les navigateurs vont envoyer au serveur une requ&ecirc;te de la
+forme&nbsp;:</p>
+
+<p class=MsoNormal><b>GET /</b><i>nom-fichier.html</i> <b>HTTP/1.1<o:p></o:p></b></p>
+
+<p class=MsoHeader style='tab-stops:35.4pt'>(seul <i>nom-fichier.html</i> peut
+varier) il faut alors retourner le fichier <i>nom-fichier.html</i> au
+navigateur (ou retourner le contenu du fichier index.html si aucun nom de fichier
+n'est donn&eacute;). </p>
+
+</div>
+
+</body>
+
+</html>
