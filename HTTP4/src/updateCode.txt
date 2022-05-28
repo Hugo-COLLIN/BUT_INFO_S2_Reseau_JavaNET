@@ -1,0 +1,34 @@
+                    //if (dir.indexOf("/index.html") != dir.length() - 11)
+
+                    else if (!dir.contains("/index.html"))
+                    {
+
+                    }
+                    else if (dir.matches("^*/index.html/[^?]*$")) //!dir.contains("/index.html") &&
+                    {
+                        if (!dir.matches("^*"))
+                            dir += "/";
+
+                        dir += "index.html";
+                    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+private static final Logger LOGGER = Logger.getLogger(HttpServer.class.getName());
